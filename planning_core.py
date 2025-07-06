@@ -26,7 +26,8 @@ def generate_planning(num_workers, weekly_chef_need, output_path="planning.xlsx"
 
     # Contrainte de couverture horaire
     for d in range(DAYS):
-       need_raw = weekly_chef_need[day_names[d]]
+       need = weekly_chef_need[day_names[d]]
+
 
         for h in range(HOURS_PER_DAY):
             model.Add(sum(shifts[w][idx(d,h)] for w in range(num_workers)) >= need[h])
